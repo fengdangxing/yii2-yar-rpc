@@ -1,6 +1,6 @@
 <?php
 
-namespace fengdangxing\yii2YarRpc;
+namespace fengdangxing\rpc;
 
 class  Base
 {

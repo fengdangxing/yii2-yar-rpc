@@ -24,7 +24,7 @@
     "require-dev":{},
     "autoload": {
       "psr-4": {
-        "fengdangxing\\yii2YarRpc\\": "lib"
+        "fengdangxing\\rpc\\": "lib"
       }
     }
 }
