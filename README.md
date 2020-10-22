@@ -7,3 +7,12 @@ $client = Rpc::getService(\backend\modules\v1\service\Task::class, 'http://www.t
 $back = $client->add_test(1, 2);
 
 #并行
+
+
+```
+#php依赖
+msgpack
+yar
+
+https://pecl.php.net/
+
