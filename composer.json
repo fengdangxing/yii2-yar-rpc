@@ -21,7 +21,9 @@
         "url": "https://asset-packagist.org"
       }
     ],
-    "require-dev":{},
+    "require-dev":{
+      "fengdangxing/yii2-yar-rpc":"dev-master"
+    },
     "autoload": {
       "psr-4": {
         "fengdangxing\\rpc\\": "lib"
