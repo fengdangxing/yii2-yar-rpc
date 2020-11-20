@@ -17,7 +17,7 @@ class Yar extends Base
      * @param null $func
      * @return \Yar_Client |bool
      */
-    public static function getService($calss, $server_url, $func = null)
+    public static function getService($calss, $server_url)
     {
         try {
             if (!isset($server_url)) {
@@ -38,9 +38,6 @@ class Yar extends Base
             $object = new \Yar_Client($url);
             $object->SetOpt(YAR_OPT_CONNECT_TIMEOUT, 10000);
             $object->SetOpt(YAR_OPT_TIMEOUT, 10000);
-            if (is_callable($func)) {
-                call_user_func($func, $url);
-            }
         } catch (\Exception $e) {
             return false;
         }
@@ -56,7 +53,7 @@ class Yar extends Base
      * @param Response $response
      * @return bool
      */
-    public static function setService(Request $request, Response $response)
+    public static function setService(Request $request, Response $response, $func = null)
     {
         $response->send();
         $requestData = $request->get();
@@ -74,6 +71,9 @@ class Yar extends Base
             $ob = new \ReflectionClass($data['class']);
             $class = $ob->getName();
             $server = new \Yar_Server(new $class());
+            if (is_callable($func)) {
+                call_user_func($func, $data);
+            }
             return $server->handle();
         } catch (\Exception $e) {
             return false;
