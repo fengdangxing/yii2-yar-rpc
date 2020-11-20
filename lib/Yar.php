@@ -1,4 +1,5 @@
 <?php
+
 namespace fengdangxing\rpc;
 
 use yii\base\Request;
@@ -13,9 +14,10 @@ class Yar extends Base
      * @date: 2020/10/16
      * @param $calss
      * @param $server_url
+     * @param null $func
      * @return \Yar_Client |bool
      */
-    public static function getService($calss, $server_url)
+    public static function getService($calss, $server_url, $func = null)
     {
         try {
             if (!isset($server_url)) {
@@ -36,6 +38,9 @@ class Yar extends Base
             $object = new \Yar_Client($url);
             $object->SetOpt(YAR_OPT_CONNECT_TIMEOUT, 10000);
             $object->SetOpt(YAR_OPT_TIMEOUT, 10000);
+            if (is_callable($func)) {
+                call_user_func($func, $url);
+            }
         } catch (\Exception $e) {
             return false;
         }
