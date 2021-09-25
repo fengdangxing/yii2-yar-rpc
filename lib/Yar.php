@@ -36,8 +36,8 @@ class Yar extends Base
             $url = "{$server_url}?" . implode('&', $urlData);
 
             $object = new \Yar_Client($url);
-            $object->SetOpt(YAR_OPT_CONNECT_TIMEOUT, 10000);
-            $object->SetOpt(YAR_OPT_TIMEOUT, 10000);
+            $object->SetOpt(YAR_OPT_CONNECT_TIMEOUT, 60000);
+            $object->SetOpt(YAR_OPT_TIMEOUT, 60000);
         } catch (\Exception $e) {
             return false;
         }
